@@ -144,6 +144,69 @@ fun MainScreen(
                             )
                         }
                     }
+                    Box {
+    IconButton(
+        onClick = { isMenuExpanded = true }
+    ) {
+        Icon(
+            imageVector = Icons.Default.Menu,
+            contentDescription = "منوی برنامه"
+        )
+    }
+
+    DropdownMenu(
+        expanded = isMenuExpanded,
+        onDismissRequest = {
+            isMenuExpanded = false
+        }
+    ) {
+        DropdownMenuItem(
+            text = { Text("حمایت مالی ❤️") },
+            leadingIcon = {
+                Icon(
+                    Icons.Default.Favorite,
+                    contentDescription = null
+                )
+            },
+            onClick = {
+                isMenuExpanded = false
+                isViewingSupport = true
+            }
+        )
+
+        DropdownMenuItem(
+            text = { Text("ارتباط با ما") },
+            leadingIcon = {
+                Icon(
+                    Icons.Default.MailOutline,
+                    contentDescription = null
+                )
+            },
+            onClick = {
+                isMenuExpanded = false
+
+                val intent = android.content.Intent(
+                    android.content.Intent.ACTION_SENDTO
+                ).apply {
+                    data = android.net.Uri.parse(
+                        "mailto:your-email@example.com"
+                    )
+                    putExtra(
+                        android.content.Intent.EXTRA_SUBJECT,
+                        "ارتباط با توسعه‌دهنده زرنگار"
+                    )
+                }
+
+                if (intent.resolveActivity(
+                        context.packageManager
+                    ) != null
+                ) {
+                    context.startActivity(intent)
+                }
+            }
+        )
+    }
+}
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface
