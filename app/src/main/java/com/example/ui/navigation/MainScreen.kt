@@ -58,6 +58,12 @@ import com.example.ui.viewmodel.CalculatorViewModel
 import com.example.ui.viewmodel.HistoryViewModel
 import com.example.ui.viewmodel.MarketViewModel
 import com.example.ui.viewmodel.SettingsViewModel
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import com.example.ui.screens.support.SupportScreen
 
 enum class MainDestination(
     val titleFa: String,
