@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">زرنگار</string>
+    <string name="app_tagline">محاسبه‌گر هوشمند قیمت طلا، نقره و جواهرات</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">خانه</string>
+    <string name="nav_calculator">محاسبه</string>
+    <string name="nav_market">بازار</string>
+    <string name="nav_history">تاریخچه</string>
+    <string name="nav_settings">تنظیمات</string>
+
+    <!-- Home Dashboard -->
+    <string name="dashboard_welcome">پیشخوان بازار طلا و نقره</string>
+    <string name="dashboard_live_pulse">وضعیت بازار زنده</string>
+    <string name="dashboard_quick_calc">محاسبه سریع طلا و نقره</string>
+    <string name="dashboard_quick_calc_desc">محاسبه آنلاین قیمت طلا، اجرت، سود و مالیات با فرمول استاندارد</string>
+    <string name="dashboard_last_update">آخرین به‌روزرسانی: %1$s</string>
+    <string name="dashboard_refresh">به‌روزرسانی قیمت‌ها</string>
+    <string name="dashboard_market_trend">روند تغییرات بازار</string>
+    <string name="dashboard_status_live">زنده</string>
+    <string name="dashboard_status_cached">حافظه موقت</string>
+    <string name="dashboard_status_manual">دستی</string>
+    <string name="dashboard_status_stale">قیمت‌ها قدیمی است</string>
+
+    <!-- Calculator -->
+    <string name="calc_gold">طلا</string>
+    <string name="calc_silver">نقره</string>
+    <string name="calc_mode_simple">ساده</string>
+    <string name="calc_mode_advanced">پیشرفته</string>
+    <string name="calc_weight_grams">وزن (گرم)</string>
+    <string name="calc_weight_oz">وزن (اونس)</string>
+    <string name="calc_purity_karat">عیار طلا</string>
+    <string name="calc_purity_fineness">عیار نقره (خلوص در هزار)</string>
+    <string name="calc_custom_purity">عیار دلخواه</string>
+    <string name="calc_ref_price">قیمت پایه طلا</string>
+    <string name="calc_ref_silver_price">قیمت پایه نقره</string>
+    <string name="calc_basis_18k">مبنای طلای ۱۸ عیار (۷۵۰)</string>
+    <string name="calc_basis_24k">مبنای طلای ۲۴ عیار (۱۰۰۰)</string>
+    <string name="calc_ojrat">اجرت ساخت</string>
+    <string name="calc_ojrat_percent">درصد اجرت (%)</string>
+    <string name="calc_ojrat_fixed">اجرت ثابت به ازای هر گرم</string>
+    <string name="calc_profit">سود فروشنده (%)</string>
+    <string name="calc_tax">مالیات بر ارزش افزوده (%)</string>
+    <string name="calc_tax_base">مبنای محاسبه مالیات</string>
+    <string name="calc_tax_base_profit_ojrat">فقط سود و اجرت (قانون جدید)</string>
+    <string name="calc_tax_base_total">کل مبلغ (قانون قدیم)</string>
+    <string name="calc_tax_base_none">بدون مالیات</string>
+    <string name="calc_additional_costs">هزینه‌های جانبی و متعلقات</string>
+    <string name="calc_discount">تخفیف</string>
+    <string name="calc_result_total">مبلغ کل برآوردی</string>
+    <string name="calc_result_raw_metal">ارزش خالص فلز</string>
+    <string name="calc_result_pure_weight">وزن طلای خالص (۲۴ عیار)</string>
+    <string name="calc_breakdown_title">ریز محاسبات شفاف</string>
+    <string name="calc_disclaimer">توجه: این محاسبه بر اساس فرمول‌های استاندارد صنف طلا و جواهر برآورد شده و ممکن است قیمت نهایی معامله اندکی متفاوت باشد.</string>
+    <string name="calc_save_to_history">ذخیره در سوابق</string>
+    <string name="calc_saved_success">محاسبه با موفقیت ذخیره شد</string>
+    <string name="calc_reset">پاک کردن فرم</string>
+
+    <!-- Market -->
+    <string name="market_title">نرخ‌های زنده بازار</string>
+    <string name="market_gold_18k">طلای ۱۸ عیار (گرم)</string>
+    <string name="market_gold_24k">طلای ۲۴ عیار (گرم)</string>
+    <string name="market_mesghal">مثقال طلا (مظنه)</string>
+    <string name="market_coin_emami">سکه تمام بهار (امامی)</string>
+    <string name="market_coin_bahar">سکه تمام آزادی</string>
+    <string name="market_coin_half">نیم سکه آزادی</string>
+    <string name="market_coin_quarter">ربع سکه آزادی</string>
+    <string name="market_silver_999">نقره ساچمه ۹۹۹ (گرم)</string>
+    <string name="market_silver_925">نقره استرلینگ ۹۲۵ (گرم)</string>
+    <string name="market_usd_irr">نرخ دلار بازار آزاد</string>
+    <string name="market_gold_ounce">اونس جهانی طلا</string>
+    <string name="market_silver_ounce">اونس جهانی نقره</string>
+    <string name="market_manual_override">ویرایش دستی نرخ‌ها</string>
+    <string name="market_save_manual">ثبت نرخ‌های دستی</string>
+    <string name="market_reset_api">بازگشت به نرخ‌های بازار</string>
+    <string name="market_offline_notice">ارتباط اینترنت برقرار نیست. آخرین نرخ‌های ذخیره شده نمایش داده می‌شوند.</string>
+
+    <!-- History -->
+    <string name="history_title">سوابق محاسبات</string>
+    <string name="history_empty">هنوز هیچ محاسبه‌ای ذخیره نشده است</string>
+    <string name="history_clear_all">پاکسازی تمام سوابق</string>
+    <string name="history_confirm_clear">آیا از حذف تمام تاریخچه اطمینان دارید؟</string>
+    <string name="history_deleted">مورد با موفقیت حذف شد</string>
+    <string name="history_all_cleared">تمامی سوابق پاک شدند</string>
+    <string name="history_reopen">بارگذاری در ماشین حساب</string>
+
+    <!-- Settings -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_appearance">ظاهر و پوسته</string>
+    <string name="settings_theme_system">پیرو تنظیمات سیستم</string>
+    <string name="settings_theme_light">روشن</string>
+    <string name="settings_theme_dark">تاریک (لوکس زغالی)</string>
+    <string name="settings_currency">واحد پول پیش‌فرض</string>
+    <string name="settings_currency_toman">تومان</string>
+    <string name="settings_currency_rial">ریال</string>
+    <string name="settings_digits">قالب نمایش اعداد</string>
+    <string name="settings_digits_persian">ارقام فارسی (۱۲۳٬۴۵۶)</string>
+    <string name="settings_digits_english">ارقام انگلیسی (123,456)</string>
+    <string name="settings_defaults">پیش‌فرض‌های محاسباتی</string>
+    <string name="settings_default_gold_karat">عیار پیش‌فرض طلا</string>
+    <string name="settings_default_silver_fineness">عیار پیش‌فرض نقره</string>
+    <string name="settings_default_calc_mode">حالت پیش‌فرض ماشین‌حساب</string>
+    <string name="settings_default_profit">درصد سود پیش‌فرض طلافروش (معمولاً ۷٪)</string>
+    <string name="settings_default_tax">درصد مالیات پیش‌فرض (معمولاً ۹٪)</string>
+    <string name="settings_market_refresh">فاصله به‌روزرسانی نرخ‌ها</string>
+    <string name="settings_min_1">۱ دقیقه</string>
+    <string name="settings_min_5">۵ دقیقه</string>
+    <string name="settings_min_15">۱۵ دقیقه</string>
+    <string name="settings_min_manual">صرفاً دستی</string>
+    <string name="settings_about">درباره زرنگار</string>
+    <string name="settings_about_desc">زرنگار نرم‌افزار تخصصی محاسبه طلا، نقره و نظارت بر نوسانات بازار طلا و جواهر است که با رعایت کامل قوانین مالیاتی جدید صنف طلا در ایران و پشتیبانی کامل از استاندارد‌های حسابداری طراحی شده است.</string>
+
+    <!-- Common -->
+    <string name="common_confirm">تأیید</string>
+    <string name="common_cancel">انصراف</string>
+    <string name="common_delete">حذف</string>
+    <string name="common_close">بستن</string>
+    <string name="common_edit">ویرایش</string>
+    <string name="common_save">ذخیره</string>
+    <string name="common_unit_gram">گرم</string>
+    <string name="common_unit_toman">تومان</string>
+    <string name="common_unit_rial">ریال</string>
+    <string name="common_unit_usd">دلار</string>
+</resources>
