@@ -215,7 +215,8 @@ class MarketRepository(context: Context) {
                         val json = JSONObject(body)
                         val current = json.optJSONObject("current")
                         if (current != null) {
-                            fetchedSuccess = true
+                            // Parse all supported symbols first. A non-null `current` object alone
+                            // does NOT mean that usable market prices were received.
 
                             // 18K Gold (tgju_gold_irg18) -> Rials to Tomans
                             parseTgjuItem(current, "tgju_gold_irg18")?.let { (p, dp) ->
@@ -270,6 +271,10 @@ class MarketRepository(context: Context) {
                                 priceMap["ounce_silver"] = BigDecimal(p.toInt())
                                 dp?.let { changeMap["ounce_silver"] = it }
                             }
+
+                            // Consider refresh successful only when the key price shown on the
+                            // home screen (18K gold) was actually received and is valid.
+                            fetchedSuccess = priceMap["gold_18k"] != null
                         }
                     }
                 }
@@ -282,34 +287,48 @@ class MarketRepository(context: Context) {
                 if (item.isManualOverride) {
                     item // preserve user's manual customized price!
                 } else {
-                    val newPrice = priceMap[item.id] ?: item.currentPriceToman
-                    val newChange = changeMap[item.id] ?: item.changePercent24h
-                    item.copy(
-                        currentPriceToman = newPrice,
-                        changePercent24h = newChange,
-                        lastUpdated = now,
-                        isLive = fetchedSuccess
-                    )
+                    val receivedPrice = priceMap[item.id]
+                    if (receivedPrice != null) {
+                        item.copy(
+                            currentPriceToman = receivedPrice,
+                            changePercent24h = changeMap[item.id] ?: item.changePercent24h,
+                            lastUpdated = now,
+                            isLive = true
+                        )
+                    } else {
+                        // Do not label an old/fallback value as live or freshly updated.
+                        item.copy(isLive = false)
+                    }
                 }
             }
 
-            // Save to sharedPrefs
-            sharedPrefs.edit().apply {
-                putLong("cache_time", now)
-                for (it in updatedItems) {
-                    putString("price_${it.id}", it.currentPriceToman.toPlainString())
+            // Only advance the cache timestamp and save fetched values after a valid 18K
+            // gold price was received. Never make stale prices look freshly updated.
+            if (fetchedSuccess) {
+                sharedPrefs.edit().apply {
+                    putLong("cache_time", now)
+                    for (item in updatedItems) {
+                        if (priceMap.containsKey(item.id) || item.isManualOverride) {
+                            putString("price_${item.id}", item.currentPriceToman.toPlainString())
+                        }
+                    }
+                    apply()
                 }
-                apply()
             }
 
+            val previousCacheTime = sharedPrefs.getLong("cache_time", 0L)
+            val effectiveLastUpdated = if (fetchedSuccess) now else previousCacheTime
+            val effectiveStale = effectiveLastUpdated == 0L ||
+                (now - effectiveLastUpdated) > 4 * 3600 * 1000L
             _marketState.value = MarketDataState.Success(
                 items = updatedItems,
-                lastUpdated = now,
-                isStale = false,
+                lastUpdated = effectiveLastUpdated,
+                isStale = effectiveStale,
                 isOffline = !fetchedSuccess,
                 hasManualOverrides = updatedItems.any { it.isManualOverride }
             )
-            Result.success(Unit)
+            if (fetchedSuccess) Result.success(Unit)
+            else Result.failure(IllegalStateException("TGJU returned no valid 18K gold price"))
         } catch (e: Exception) {
             val cached = (_marketState.value as? MarketDataState.Success)?.items ?: baselineItems
             _marketState.value = MarketDataState.Success(
@@ -325,10 +344,14 @@ class MarketRepository(context: Context) {
 
     private fun parseTgjuItem(current: JSONObject, key: String): Pair<Double, Double?>? {
         val obj = current.optJSONObject(key) ?: return null
-        val priceStr = obj.optString("p").replace(",", "").trim()
+        val priceStr = obj.optString("p")
+            .replace(",", "")
+            .replace("٬", "")
+            .trim()
         val price = priceStr.toDoubleOrNull() ?: return null
+        if (!price.isFinite() || price <= 0.0) return null
         val dp = obj.optDouble("dp", Double.NaN)
-        val change = if (dp.isNaN()) null else dp
+        val change = if (dp.isNaN() || !dp.isFinite()) null else dp
         return Pair(price, change)
     }
 
