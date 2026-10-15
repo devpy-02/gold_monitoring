@@ -74,7 +74,8 @@ enum class MainDestination(
     HOME("خانه", Icons.Filled.Home, Icons.Outlined.Home, "nav_home"),
     CALCULATOR("محاسبه", Icons.Filled.Calculate, Icons.Outlined.Calculate, "nav_calculator"),
     MARKET("بازار", Icons.Filled.ShowChart, Icons.Outlined.ShowChart, "nav_market"),
-    SETTINGS("تنظیمات", Icons.Filled.Settings, Icons.Outlined.Settings, "nav_settings")
+    SETTINGS("تنظیمات", Icons.Filled.Settings, Icons.Outlined.Settings, "nav_settings"),
+    SUPPORT("حمایت",Icons.Filled.Favorite,Icons.Filled.Favorite,"nav_support")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
