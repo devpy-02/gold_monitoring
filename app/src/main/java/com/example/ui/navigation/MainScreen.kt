@@ -88,6 +88,8 @@ fun MainScreen(
 ) {
     var currentDestination by remember { mutableStateOf(MainDestination.HOME) }
     var isViewingHistory by remember { mutableStateOf(false) }
+    var isViewingSupport by remember { mutableStateOf(false) }
+    var isMenuExpanded by remember { mutableStateOf(false) }
 
     // Handle back button when on sub-screen
     BackHandler(enabled = isViewingHistory || currentDestination != MainDestination.HOME) {
