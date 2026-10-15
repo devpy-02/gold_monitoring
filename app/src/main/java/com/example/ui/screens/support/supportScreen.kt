@@ -39,9 +39,9 @@ fun SupportScreen(
     val clipboardManager = LocalClipboardManager.current
 
     // اطلاعات واقعی خودت را در این قسمت وارد کن.
-    val cardNumber = "0000-0000-0000-0000"
-    val cardHolder = "نام صاحب کارت"
-    val bankName = "نام بانک"
+    val cardNumber = "5894631240346528"
+    val cardHolder = "علیرضا مجاهد"
+    val bankName = "بانک رفاه کارگران"
 
     Column(
         modifier = Modifier
