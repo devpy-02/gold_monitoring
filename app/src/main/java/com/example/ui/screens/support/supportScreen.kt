@@ -33,6 +33,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 
 private const val CARD_NUMBER = "شماره_کارت_اینجا"
 private const val CARD_OWNER = "نام صاحب کارت"
